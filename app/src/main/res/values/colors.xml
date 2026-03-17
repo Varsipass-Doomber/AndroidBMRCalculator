@@ -2,5 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="button_color">#D0E8FF</color>
+    <color name="button_color">#FDB5C0</color>
+    <color name="selected_gender_button_color">#FA758D</color>
 </resources>
