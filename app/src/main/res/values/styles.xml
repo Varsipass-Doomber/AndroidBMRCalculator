@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="characteristic_textView_style">
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textSize">@dimen/text_size</item>
+    </style>
+
+    <style name="basic_button_style">
+        <item name="backgroundTint">@color/button_color</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/text_size</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
+    <style name="gender_button_style" parent="basic_button_style">
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:layout_width">@dimen/gender_button_size</item>
+        <item name="android:layout_height">@dimen/gender_button_size</item>
+        <item name="android:layout_margin">0dp</item>
+    </style>
+
+    <style name="selected_gender_button_style" parent="gender_button_style">
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:layout_width">@dimen/gender_button_size</item>
+        <item name="android:layout_height">@dimen/gender_button_size</item>
+        <item name="backgroundTint">@color/selected_gender_button_color</item>
+        <item name="android:layout_margin">0dp</item>
+    </style>
+
+    <style name="results_box_style">
+        <item name="android:layout_width">350dp</item>
+        <item name="android:background">@color/button_color</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:paddingStart">15dp</item>
+        <item name="android:paddingEnd">15dp</item>
+        <item name="android:paddingTop">7dp</item>
+        <item name="android:paddingBottom">7dp</item>
+
+    </style>
+    <style name="result_textView_style">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/text_size</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:layout_marginTop">3dp</item>
+        <item name="android:layout_marginBottom">3dp</item>
+    </style>
+
+    <style name="table_textView_style">
+        <item name="android:layout_height">80dp</item>
+        <item name="android:textSize">@dimen/text_size</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">center</item>
+    </style>
+</resources>

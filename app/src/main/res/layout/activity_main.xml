@@ -7,13 +7,200 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/screen_top_bottom_edges_padding"
+        android:paddingBottom="@dimen/screen_top_bottom_edges_padding">
+
+        <TextView
+            style="@style/result_textView_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Калькулятор BMR"
+            android:textSize="35sp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:layout_marginBottom="50dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <ImageButton
+                android:id="@+id/male_button"
+                style="@style/gender_button_style"
+                android:src="@drawable/male_icon"
+                android:onClick="onGenderButtonClick"
+                />
+
+            <ImageButton
+                android:id="@+id/female_button"
+                style="@style/gender_button_style"
+                android:src="@drawable/female_icon"
+                android:onClick="onGenderButtonClick"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/characteristics_box_width"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:padding="5dp">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="@dimen/characteristic_text_width"
+                    android:layout_height="wrap_content"
+                    style="@style/characteristic_textView_style"
+                    android:gravity="center"
+                    android:text="Рост"/>
+
+                <EditText
+                    android:id="@+id/people_height_editText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="@dimen/characteristic_text_width"
+                    android:layout_height="wrap_content"
+                    style="@style/characteristic_textView_style"
+                    android:gravity="center"
+                    android:text="Вес"/>
+
+                <EditText
+                    android:id="@+id/people_weight_editText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="@dimen/characteristic_text_width"
+                    android:layout_height="wrap_content"
+                    style="@style/characteristic_textView_style"
+                    android:gravity="center"
+                    android:text="Возраст"/>
+
+                <EditText
+                    android:id="@+id/people_age_editText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <Button
+                android:id="@+id/calculate_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/basic_button_style"
+                android:text="Рассчитать"
+                android:onClick="onCalculateButtonClick"/>
+
+            <Button
+                android:id="@+id/clear_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/basic_button_style"
+                android:text="Очистить поля"
+                android:onClick="onClearButtonClick"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/results_box_style"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/bmr_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ваш BMR"
+                android:textAlignment="center"
+                style="@style/result_textView_style"/>
+
+            <TextView
+                style="@style/result_textView_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ежедневная трата каллорий"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/sit_lifestyle_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Сидячий:"
+                style="@style/result_textView_style"/>
+
+            <TextView
+                android:id="@+id/small_lifestyle_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Малая активность:"
+                style="@style/result_textView_style"/>
+
+            <TextView
+                android:id="@+id/medium_lifestyle_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Средняя активность:"
+                style="@style/result_textView_style"/>
+
+            <TextView
+                android:id="@+id/strong_lifestyle_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Сильная активность:"
+                style="@style/result_textView_style"/>
+
+            <TextView
+                android:id="@+id/max_lifestyle_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Максимальная активность:"
+                style="@style/result_textView_style"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/learn_more_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            style="@style/basic_button_style"
+            android:text="Узнать больше об активностях"
+            android:onClick="onLearnMoreButtonClick"/>
+
+    </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
