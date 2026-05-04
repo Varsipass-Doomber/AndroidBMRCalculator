@@ -10,7 +10,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BRMCalculator">
+        android:theme="@style/Theme.Design.Light">
+        <activity android:name=".MarathonSkillsInfo"
+            android:exported="false"/>
         <activity
             android:name=".InformationActivity"
             android:exported="false" />

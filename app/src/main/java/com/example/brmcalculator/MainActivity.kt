@@ -3,7 +3,12 @@ package com.example.brmcalculator
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.res.ColorStateList
+import android.nfc.Tag
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -11,13 +16,15 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
-import androidx.annotation.StyleRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import java.io.BufferedWriter
+import java.io.FileWriter
+import java.io.IOException
+
 
 class MainActivity : AppCompatActivity() {
     lateinit var maleButton : ImageButton
@@ -36,6 +43,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var maxLifestyleTextView : TextView
     var isGenderChosen : Boolean = false
     var selectedGender : String = "None"
+    var bmr : Double = -1.0
+    val bmrSavedFileName : String = "log_bmr_info.txt"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +72,28 @@ class MainActivity : AppCompatActivity() {
         mediumLifestyleTextView = findViewById(R.id.medium_lifestyle_textView)
         strongLifestyleTextView = findViewById(R.id.strong_lifestyle_textView)
         maxLifestyleTextView = findViewById(R.id.max_lifestyle_textView)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater : MenuInflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return  when (item.itemId) {
+            R.id.show_marathon_info -> {
+                val intent = Intent(this, MarathonSkillsInfo::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.save_bmr -> {
+                Log.i("MarathonInfo", "$selectedGender $bmr")
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+
     }
 
     fun onGenderButtonClick(v : View) {
@@ -96,6 +127,7 @@ class MainActivity : AppCompatActivity() {
         heightEditText.text = null
         weightEditText.text = null
         ageEditText.text = null
+        bmr = -1.0
         bmrMessageTextView.text = "Ваш BMR"
 
         sitLifestyleTextView.text = "Сидячий: "
@@ -141,7 +173,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        var bmr : Double = when(selectedGender) {
+        bmr = when(selectedGender) {
             "Male" -> {
                 66.0 + weight * 13.7 +
                         height * 5 -
